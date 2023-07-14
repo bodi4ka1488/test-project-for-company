@@ -1,0 +1,47 @@
+.beerCart {
+  width: 100vh;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 19px 4px rgba(0, 0, 0, 0.75);
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+.beerCardText {
+  width: 80%;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  text-align: center;
+}
+.beerCardText span {
+  display: inline-block;
+  max-width: 100%;
+}
+.beerCardText span:nth-child(1) {
+  font-weight: 700;
+  font-size: 28px;
+}
+.beerCardText span:nth-child(3) {
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  font-size: 18px;
+}
+.selected {
+  background-color: aqua;
+}
+
+.fotoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 190px;
+}
+
+.fotoContainer img {
+  max-width: 50%;
+  max-height: 50%;
+}
