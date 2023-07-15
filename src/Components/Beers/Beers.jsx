@@ -3,6 +3,7 @@ import { useBeers } from "../../Store/useBeers/useBeers";
 import "./style.css";
 import { BeerCard } from "./BeerCard/BeerCard";
 import { shallow } from "zustand/shallow";
+import { Link } from "react-router-dom";
 
 export const Beers = () => {
   const { beers } = useBeers(
@@ -29,39 +30,30 @@ export const Beers = () => {
     deleteCard();
   };
 
-  const limitedBeers = beers.slice(0, 5);
-
   useEffect(() => {
     if (!beers.length) {
       fetchBeers(currentPageOfBeers);
     }
-    function handleScroll() {
-      const scrolableHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scroledHeight = window.scrollY;
-      if (scroledHeight > scrolableHeight * 0.8) {
-      }
-    }
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [beers, currentPageOfBeers, fetchBeers]);
+  }, [beers]);
+
+  const limitedBeers = beers.slice(10, 15);
   return (
     <div className="beerWrapper">
       {isLoading ? (
         <h1>Loading ... </h1>
       ) : (
         limitedBeers.map((beer) => (
-          <BeerCard
-            key={beer.id}
-            id={beer.id}
-            name={beer.name}
-            tagline={beer.tagline}
-            description={beer.description}
-            image_url={beer.image_url}
-            beer={beer}
-          />
+          <Link to={`/beer/${beer.id}`} key={beer.id}>
+            <BeerCard
+              key={beer.id}
+              id={beer.id}
+              name={beer.name}
+              tagline={beer.tagline}
+              description={beer.description}
+              image_url={beer.image_url}
+              beer={beer}
+            />
+          </Link>
         ))
       )}
       {selectedCards.length > 0 ? (
