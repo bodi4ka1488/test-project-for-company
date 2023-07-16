@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 18px;
+  color: rgb(50, 43, 43);
+}
+.beer_foto {
+  width: 125px;
+}
+.description {
+  width: 80%;
+  text-align: center;
+}
+.wrapper ul {
+  text-align: center;
+  width: 90%;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}

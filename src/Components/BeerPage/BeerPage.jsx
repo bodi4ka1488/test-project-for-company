@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSingleBeer } from "../../Store/useSingleBeer/useSingleBeer";
 import { v4 as uuidv4 } from "uuid";
+import "./style.css";
 
 export const BeerPage = () => {
   const id = useParams();
@@ -14,11 +15,11 @@ export const BeerPage = () => {
   return (
     <>
       {beer.length > 0 ? (
-        <div>
-          <img src={`${beer[0].image_url}`} alt="" />
+        <div className="wrapper">
+          <img className="beer_foto" src={`${beer[0].image_url}`} alt="" />
           <h1>{beer[0].name}</h1>
           <h3>{beer[0].tagline}</h3>
-          <p>{beer[0].description}</p>
+          <p className="description">{beer[0].description}</p>
           <p>First brewed in {beer[0].first_brewed}</p>
           <p> {beer[0].attenuation_level}% customer drink it often</p>
           <p>
@@ -37,9 +38,9 @@ export const BeerPage = () => {
             <li>
               Mash Malt temperature :{" "}
               {beer[0].method.mash_temp.map((temp) => (
-                <p key={uuidv4()}>
+                <span key={uuidv4()}>
                   {temp.temp.value} {temp.temp.unit} :{temp.duration} hours
-                </p>
+                </span>
               ))}
             </li>
             {beer[0].method.twist !== null ? (

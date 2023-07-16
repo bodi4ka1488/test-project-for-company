@@ -3,12 +3,25 @@ import { devtools } from "zustand/middleware";
 
 export const useBeers = create(
   devtools((set) => ({
+    startIndex: 0,
+    endIndex: 4,
+    beersPart: 0,
     beers: [],
-    visibleBeers: [],
     selectedCards: [],
     loading: false,
     currentPageOfBeers: 1,
     error: null,
+
+    setbeersPart: (newbeersPart) =>
+      set((state) => ({ beersPart: newbeersPart })),
+
+    setStartIndex: (newStartIndex) =>
+      set((state) => ({ startIndex: newStartIndex })),
+
+    setEndIndex: (newEndIndex) => set((state) => ({ endIndex: newEndIndex })),
+
+    setVisible: (newStartIndex) =>
+      set((state) => ({ visibleBeers: newStartIndex })),
 
     toggledCard: (cardId) =>
       set((state) => ({
@@ -31,6 +44,7 @@ export const useBeers = create(
         );
         if (!res.ok) throw new Error("Failed to fetch, try again");
         set({ currentPageOfBeers: currentPageOfBeers + 1 });
+        // const beers = await res.json();
         set({
           beers: await res.json(),
           error: null,
